@@ -1,0 +1,63 @@
+#include <stdio.h>
+void getItemPrice();
+void withinbudget();
+int pog(int ,int, int);
+
+int main(){
+    int budget,item,apl,orng,pr;
+    printf("***ITEM PROFILES***\n");
+    printf("A: Apple\n");
+    printf("O: Orange\n");
+    printf("P: Pears\n");
+    printf("********************\n\n");
+    getItemPrice();
+    
+    printf("Enter budget: ");
+    scanf("%d",&budget);
+    printf("Which item would you like to purchase?\n");
+    printf("Press 'A' if you would like to purchase an apple!\nPress 'O' if you would like to purchase an orange!\nPress 'P' if you would like to purchase a pear!\n\n", apl, orng, pr);
+    printf("Please enter the item you want to purchase: ");
+    scanf(" %c", &item);
+    withinbudget();
+    
+    
+   return 0;
+}
+
+// function 1
+void getItemPrice(){
+     int orng, apl, pr,items;
+     
+     printf("Enter apple price: ");
+     scanf("%d",&apl);
+     printf("Enter orange price: ");
+     scanf("%d",&orng);
+     printf("Enter pear price: ");
+     scanf("%d",&pr);
+     items=pog(apl,orng,pr);
+}
+//function 2 used inside function 1
+
+int pog(int apl,int orng, int pr){
+    printf("***ITEM MENU***\n");
+    printf("Item Prices\n");
+    printf("A: %d\n", apl);
+    printf("O: %d\n", orng);
+    printf("P: %d\n", pr);
+    printf("***************\n\n");
+}
+
+//function 3
+void withinbudget(){
+    int apl,ong,pr,budget,item;
+if (budget >= apl)
+        {
+            printf("Orange purchased!\n");
+            budget -= apl;
+            printf("****Remaining budget****\n");
+            printf("Remaining budget: %d\n", budget);
+        }
+        else {
+            printf("purchase failed!");
+        }
+}
