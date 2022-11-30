@@ -1,0 +1,38 @@
+#include <stdio.h>
+void getItemPrice();
+int pog(int , int, int);
+
+int main(){
+    
+    printf("***ITEM PROFILES***\n");
+    printf("A: Apple\n");
+    printf("O: Orange\n");
+    printf("P: Pears\n");
+    printf("********************\n\n");
+    getItemPrice();
+    
+   return 0;
+}
+
+// function 1
+void getItemPrice(){
+     int orng, apl, pr,items;
+     
+     printf("Enter apple price: ");
+     scanf("%d",&apl);
+     printf("Enter orange price: ");
+     scanf("%d",&orng);
+     printf("Enter pear price: ");
+     scanf("%d",&pr);
+     items=pog(apl,orng,pr);
+}
+//function 2 used inside function 1
+
+int pog(int apl,int orng, int pr){
+    printf("***ITEM MENU***\n");
+    printf("Item Prices\n");
+    printf("A: %d\n", apl);
+    printf("O: %d\n", orng);
+    printf("P: %d\n", pr);
+    printf("***************\n\n");
+}
