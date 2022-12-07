@@ -1,0 +1,93 @@
+#include <stdio.h>
+float getItemPrice(char itemPrefix, int applePrice, int orangePrice, int pearPrice);
+void displayMenu(int applePrice, int orangePrice, int pearPrice);
+float withinBudget(int budget, char purchase, int applePrice, int orangePrice, int pearPrice);
+float purchaseItem(int budget, char purchase, int applePrice, int orangePrice, int pearPrice);
+
+
+int main() {
+    float apl,orng,pr,bud;
+    char ch=156;
+    
+    printf("*** SHOPKEEPER PANEL***\n");
+    printf("Please enter apple price:%c",ch);
+    scanf("%f",&apl);
+    printf("Please enter orange price:%c",ch);
+    scanf("%f",&orng);
+    printf("Please enter pear price:%c",ch);
+    scanf("%f",&pr);
+    printf("***********************\n\n");
+
+
+    printf("Hello dear customer and Welcome to the shop!\n"); 
+    printf("Here is today's item menu with today's prices!\n\n");
+    
+    return 0;
+}
+    printf("Please state your budget: ");
+    scanf("%2f",&bud);
+    if (bud<=0)
+    {
+        printf("Insufficient funds");
+        return 0;
+    }
+    
+    char x=0;
+    while
+    {
+        float cost=displayMenu(apl,orng,pr)
+        if (getItemPrice(apple,orng,pr)==1.0)
+        printf("There is no item with that name!\n");
+        else if (withinBudget(bud,apl,orng,pr))
+        b=purchaseItem(bud,apl,orng,pr);
+        else 
+        printf("Insufficient funds\n");
+        
+        printf("Do you want to continue shopping (y/n)?: ");
+        scanf(%c,&x);
+        while (x =='y' && x=='n')
+        {
+            prtinf("Please enter 'y' for yes or 'n' for no: ")
+            scanf("%c",&x);
+        }
+        if (x=='n')
+        break;
+    }
+    prtinf("Thank you for shopping with us!\n");
+    return 0;
+    }
+
+
+
+
+
+
+
+void displayMenu(int applePrice, int orangePrice, int pearPrice);
+{
+    printf("*** Today's item menu ***\n");
+    printf("Press A for Apple:%.2f\n",applePrice);
+    printf("Press O for Orange:%.2f\n",orangePrice);
+    printf("Press P for Pear:%.2f\n",pearPrice);
+    return applePrice+orangePrice+pearPrice;
+}
+
+
+float getItemPrice(char itemPrefix, int applePrice, int
+orangePrice, int pearPrice)
+{
+    if (itemPrefix=='A') return applePrice;
+    else if (itemPrefix=='O') return orangePrice;
+    else if (itemPrefix=='P')  return pearPrice;
+    else  return -1.0;
+}
+float withinBudget(int budget, char purchase, int applePrice, int
+orangePrice, int pearPrice)
+{
+    float cost=getItemPrice(applePrice,orangePrice,pearPrice);
+    budget-=price;
+    printf("Item Purchased: %c\n",purchase);
+    printf("Item Prefix: %c%.2f\n",price);
+    printf("Remaining budget: %c%.2f\n",budget);
+    return budget;
+}
