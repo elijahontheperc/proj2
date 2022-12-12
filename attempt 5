@@ -1,0 +1,188 @@
+  #include <stdio.h>
+//declare functions
+    int getItemPrice(char itemPrefix, int applePrice, int orangePrice, int pearPrice);
+    displayMenu(int applePrice, int orangePrice, int pearPrice);
+    withinBudget(int budget, char purchase, int applePrice, int orangePrice, int pearPrice);
+    purchaseItem(int budget, char purchase, int applePrice, int orangePrice, int pearPrice);
+
+    int main() {
+//declare all the characters
+        char ch = 156, answer, purchase;
+
+//declare the integers
+        int applePrice, orangePrice, pearPrice, budget;
+
+//display the item prefixes
+        printf("******** ItemPrefix ********\n");
+        printf("\nA: Apple\tO: Orange\tP: Pear\n");
+        printf("\n********************************\n\n");
+        printf("******* SHOPKEEPER PANAL *******\n");
+
+ //ask the shopkeeper for the prices of the items
+        printf("Please enter apple price:  %c", ch);
+        scanf_s("%d", &applePrice);
+        printf("Please enter orange price: %c", ch);
+        scanf_s("%d", &orangePrice);
+        printf("Please enter pear price:   %c", ch);
+        scanf_s("%d", &pearPrice);
+
+//use function to display shop menu
+        displayMenu(applePrice, orangePrice, pearPrice);
+
+//display customer panal
+        printf("\n\n******* CUSTOMER PANAL *******\n");
+
+//ask customer for their budget
+        printf("Please enter your budget: %c", ch);
+
+//store the budget
+        scanf_s("%d", &budget);
+
+//start a loop for customers to have an option to continue shopping
+        do {
+
+//ask customer for the itemprefix for the item they would like to purchase
+            printf("\nPlease enter ItemPrefix from the Menu to purchase:");
+            scanf_s(" %c", &purchase, 1);
+//check if valid code has not been added, if not then display error message
+
+//use function to check if itemprice is within the budget of user
+            withinBudget(budget, purchase, applePrice, orangePrice, pearPrice);
+
+//use function to calculate and print the reciept
+            purchaseItem(budget, purchase, applePrice, orangePrice, pearPrice);
+
+//ask customer if they want to continue shopping
+            printf("\nContinue shopping?(y/n)\n");
+            scanf_s("%c", &answer, 1);
+
+//give loop requirements and close it here
+            answer = getchar();
+           
+        } while (answer == 'y' || answer == 'Y' );
+       
+//automatic message when the code terminates
+        printf("\n\nThank you for shopping with us:)!");
+
+        return 0;
+    }
+//define the getItemPrice function
+    int getItemPrice(char itemPrefix, int applePrice, int orangePrice, int pearPrice)
+    {
+        if (itemPrefix == 'A' || itemPrefix == 'a')
+        {
+            return applePrice;
+        }
+        else if (itemPrefix == 'O' || itemPrefix == 'o')
+        {
+            return orangePrice;
+        }
+        else if (itemPrefix == 'P' || itemPrefix == 'p')
+        {
+            return pearPrice;
+        }
+        else
+        {
+            return -1;
+        }
+        return getItemPrice;
+    }
+
+//define the displayMenu function
+    displayMenu(int applePrice, int orangePrice, int pearPrice)
+    {
+        char ch = 156;
+
+//store the values and display on the shop menu
+        printf("******* Shop Menu *******\n");
+        printf("Item:      Prices:");
+        printf("\n[A]Apple:   %c%d", ch, applePrice);
+        printf("\n[O]Orange:  %c%d", ch, orangePrice);
+        printf("\n[P]Pear:    %c%d", ch, pearPrice);
+        return 0;
+    }
+//define the withinbudget function
+    withinBudget(int budget, char purchase, int applePrice, int orangePrice, int pearPrice)
+    {
+        int getItemPrice(char itemPrefix, int applePrice, int orangePrice, int pearPrice);
+        if (purchase == 'A' || purchase == 'a')
+        {
+            return applePrice;
+        }
+        else if (purchase == 'O' || purchase == 'o')
+        {
+            return orangePrice;
+        }
+        else if (purchase == 'P' || purchase == 'p')
+        {
+            return pearPrice;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+//define the purchaseItem function
+    int purchaseItem(int budget, char purchase, int applePrice, int orangePrice, int pearPrice)
+    {
+        int item, price, result, total = 0;
+        char ch = 156;
+
+        if (purchase == 'A' || purchase == 'a')
+        {
+            price = applePrice;
+        }
+        else if (purchase == 'O' || purchase == 'o')
+        {
+            price = orangePrice;
+        }
+        else if (purchase == 'P' || purchase == 'p')
+        {
+            price = pearPrice;
+        }
+        else
+        {
+            price = -1;
+        }
+        if (price != -1)
+        {
+
+//calculation for the recipt
+            item = price;
+            total = item + total;
+            result = budget - total;
+
+            if (result >= 0)
+            {
+                if (purchase == 'A' || purchase == 'a')
+                {
+                    printf("\nApple Purchased!");
+
+                }
+                else if (purchase == 'O' || purchase == 'o')
+                {
+                    printf("\nOrange Purchased!");
+                }
+                else if (purchase == 'P' || purchase == 'p')
+                {
+                    printf("\nPear Purchased!");
+                }
+                printf("\n*****************Reciept\n");
+                printf("--------------------------\n");
+                printf("itemPurchased:            %c\n", purchase);
+                printf("itemPrefix:             %c%d\n", ch, item);
+                printf("remainingBudget:        %c%d\n", ch, result);
+            }
+            else
+            {
+                price = -1;
+            }
+
+
+        }
+        if (price == -1)
+        {
+            printf("\n\nPURCHASE FAILED!\nLow budget or missing item.");
+        }
+
+    }
