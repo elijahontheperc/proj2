@@ -1,0 +1,104 @@
+#include <stdio.h>
+void displayMenu(int applePrice, int orangePrice, int pearPrice);
+int getItemPrice(char itemPrefix, int applePrice, int orangePrice, int pearPrice);
+int withinBudget(int budget, char purchase, int applePrice, int orangePrice, int pearPrice);
+int purchaseItem(int budget, char purchase, int applePrice, int orangePrice, int pearPrice);
+
+int main(){  
+    
+    int applePrice, orangePrice, pearPrice,budget;
+    
+    
+    printf("Enter the price of apples: ");
+    scanf("%d", &applePrice);
+    printf("Enter the price of oranges: ");
+    scanf("%d", &orangePrice);
+    printf("Enter the price of pears: ");
+    scanf("%d", &pearPrice);
+
+    
+    displayMenu(applePrice,orangePrice,pearPrice);
+
+
+    printf("Enter your budget: ");
+    scanf("%d", &budget);
+    
+    
+    
+ char continueShopping = 'y';
+    while (continueShopping == 'y')
+    {
+      
+        char purchase;
+        printf("Enter the item prefix you want to purchase: ");
+        scanf(" %c", &purchase);
+
+  
+        if (withinBudget(budget, purchase, applePrice, orangePrice, pearPrice))
+        {
+       
+            int itemPrice = getItemPrice(purchase, applePrice, orangePrice, pearPrice);
+            budget -= itemPrice;
+            printf("Purchase successful! Your remaining budget is %d.\n", budget);
+        }
+        else
+        {
+            printf("Sorry, the selected item is not within your budget.\n");
+        }
+
+          budget = purchaseItem(budget, purchase, applePrice, orangePrice, pearPrice);
+          
+        printf("Do you want to continue shopping (y/n)? ");
+        scanf(" %c", &continueShopping);
+    }
+
+    printf("Thank you for shopping with us!\n");
+    
+   
+
+    return 0;
+}
+
+void displayMenu(int applePrice, int orangePrice, int pearPrice)
+{
+    printf("*** Today's item menu ***\n");
+    printf("Press A for Apple:%d\n",applePrice);
+    printf("Press O for Orange:%d\n",orangePrice);
+    printf("Press P for Pear:%d\n",pearPrice);
+}
+
+int getItemPrice(char itemPrefix, int applePrice, int orangePrice, int pearPrice)
+{
+  switch (itemPrefix) {
+    case 'A':
+      return applePrice;
+    case 'O':
+      return orangePrice;
+    case 'P':
+      return pearPrice;
+    default:
+      return -1; 
+  }
+}
+
+int withinBudget(int budget, char purchase, int applePrice, int orangePrice, int pearPrice)
+{
+    int price = getItemPrice(purchase, applePrice, orangePrice, pearPrice);
+    if (price > budget || price == -1) {
+        return 0;
+    }
+    return 1;
+}int purchaseItem(int budget, char purchase, int applePrice, int orangePrice, int pearPrice)
+{
+    int price = getItemPrice(purchase, applePrice, orangePrice, pearPrice);
+
+    if (price > budget || price == -1)
+    {
+        printf("Purchase failed. Item not found or not within budget.\n");
+        return budget;
+    }
+    printf("Purchase successful!\n");
+    return budget - price;
+}
+
+
