@@ -1,0 +1,100 @@
+#include <stdio.h>
+void displayMenu(int applePrice, int orangePrice, int pearPrice);
+int getItemPrice(char itemPrefix, int applePrice, int orangePrice, int pearPrice);
+int withinBudget(int budget, char purchase, int applePrice, int orangePrice, int pearPrice);
+int purchaseItem(int budget, char purchase, int applePrice, int orangePrice, int pearPrice);
+
+int main(){  
+    
+    int applePrice, orangePrice, pearPrice,budget;
+    char continueShopping,purchase, pound=156;
+    
+    
+    printf("*** ITEM PROFILES ***\n");
+    printf("A: Apple\n");
+    printf("O: Orange\n");
+    printf("P: Pears\n");
+    printf("********************\n\n");
+    
+    printf("*** SHOPKEEPER PANEL***\n");
+    printf("Please enter the apple price:%c ",pound);
+    scanf("%d", &applePrice);
+    printf("Please enter orange price:%c ",pound);
+    scanf("%d", &orangePrice);
+    printf("Please enter pear price:%c ",pound);
+    scanf("%d", &pearPrice);
+    printf("***********************\n\n");
+    
+    printf("Hello dear customer and Welcome to the shop!\n");
+    printf("Here is today's item menu with today's prices!\n\n");
+
+    
+    displayMenu(applePrice,orangePrice,pearPrice);
+
+    printf("*** CUSTOMER PANEL ***\n");
+    printf("Enter your budget:%c ",pound);
+    scanf("%d", &budget);
+    printf("**********************\n\n");
+    
+    
+    
+ 
+   do 
+   {
+       printf("*****************************************\n");
+         printf("Press 'A' if you would like to purchase an apple!\nPress 'O' if you would like to purchase an orange!\nPress 'P' if you would like to purchase a pear!\n");
+         printf("*****************************************\n");
+        printf("Please enter the item you want to purchase: ");
+        scanf(" %c", &purchase);
+
+        if (withinBudget(budget, purchase, applePrice, orangePrice, pearPrice))
+        {
+       
+            int itemPrice = getItemPrice(purchase, applePrice, orangePrice, pearPrice);
+            budget -= itemPrice;
+            
+        }
+      
+          budget = purchaseItem(budget, purchase, applePrice, orangePrice, pearPrice);
+           printf("Do you want to continue shopping (y/n)?\n ");
+           scanf(" %c", &continueShopping);
+         
+   }
+while (continueShopping=='y' || continueShopping == 'Y');
+
+    printf("You entered 'N' or 'n' You are leaving the shop!\n");
+    printf("Thank you for shopping with us!\n");
+   
+
+    return 0;
+}
+
+void displayMenu(int applePrice, int orangePrice, int pearPrice)
+{
+    char pound=156;
+    printf("*** ITEM MENU ***\n");
+    printf("A: %c%d\n",pound,applePrice);
+    printf("O: %c%d\n",pound,orangePrice);
+    printf("P: %c%d\n",pound,pearPrice);
+    printf("*****************\n\n");
+}
+
+int getItemPrice(char itemPrefix, int applePrice, int orangePrice, int pearPrice)
+{
+        if (itemPrefix == 'A' || itemPrefix == 'a')
+        {
+            return applePrice;
+        }
+        else if (itemPrefix == 'O' || itemPrefix == 'o')
+        {
+            return orangePrice;
+        }
+        else if (itemPrefix == 'P' || itemPrefix == 'p')
+        {
+            return pearPrice;
+        }
+        else
+        {
+            return -1;
+        }
+}
