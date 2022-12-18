@@ -1,0 +1,112 @@
+#include <stdio.h>
+void displayMenu(int applePrice, int orangePrice, int pearPrice);
+int getItemPrice(char itemPrefix, int applePrice, int orangePrice, int pearPrice);
+int withinBudget(int budget, char purchase, int applePrice, int orangePrice, int pearPrice);
+int purchaseItem(int budget, char purchase, int applePrice, int orangePrice, int pearPrice);
+
+int main(){  
+    
+    int applePrice, orangePrice, pearPrice,budget;
+    char continueShopping,purchase;
+    
+    
+    printf("*** ITEM PROFILES ***\n");
+    printf("A: Apple\n");
+    printf("O: Orange\n");
+    printf("P: Pears\n");
+    printf("********************\n\n");
+    
+    printf("*** SHOPKEEPER PANEL***\n");
+    printf("Please enter the apple price: ");
+    scanf("%d", &applePrice);
+    printf("Please enter orange price: ");
+    scanf("%d", &orangePrice);
+    printf("Please enter pear price: ");
+    scanf("%d", &pearPrice);
+    printf("***********************\n\n");
+    
+    printf("Hello dear customer and Welcome to the shop!\n");
+    printf("Here is today's item menu with today's prices!\n\n");
+
+    
+    displayMenu(applePrice,orangePrice,pearPrice);
+
+    printf("*** CUSTOMER PANEL ***\n");
+    printf("Enter your budget: ");
+    scanf("%d", &budget);
+    printf("**********************\n\n");
+    
+    
+    
+ 
+   do
+    {
+        printf("*****************************************\n");
+         printf("Press 'A' if you would like to purchase an apple!\nPress 'O' if you would like to purchase an orange!\nPress 'P' if you would like to purchase a pear!\n");
+         printf("*****************************************\n");
+        printf("Please enter the item you want to purchase: ");
+        scanf(" %c", &purchase);
+
+        if (withinBudget(budget, purchase, applePrice, orangePrice, pearPrice))
+        {
+       
+            int itemPrice = getItemPrice(purchase, applePrice, orangePrice, pearPrice);
+            budget -= itemPrice;
+           
+        }
+        else
+        {
+            printf("Purchase failed.");
+        }
+       
+
+          budget = purchaseItem(budget, purchase, applePrice, orangePrice, pearPrice);
+        
+        printf("Do you want to continue shopping (y/n)? ");
+        printf("\nEnter 'Y' to continue shopping or 'N' to stop shopping: ");
+        scanf(" %c", &continueShopping);
+        
+    }while (continueShopping == 'y' || continueShopping == 'Y') ;
+    
+    
+    printf("You entered 'N' You are leaving the shop!\n");
+    printf("Thank you for shopping with us!\n");
+    
+   
+
+    return 0;
+}
+
+void displayMenu(int applePrice, int orangePrice, int pearPrice)
+{
+    printf("*** ITEM MENU ***\n");
+    printf("A: %d\n",applePrice);
+    printf("O: %d\n",orangePrice);
+    printf("P: %d\n",pearPrice);
+    printf("*****************\n\n");
+}
+
+int getItemPrice(char itemPrefix, int applePrice, int orangePrice, int pearPrice)
+{
+  switch (itemPrefix) {
+    case 'A':
+      return applePrice;
+    case 'O':
+      return orangePrice;
+    case 'P':
+      return pearPrice;
+    default:
+      return -1; 
+  }
+}
+
+int withinBudget(int budget, char purchase, int applePrice, int orangePrice, int pearPrice)
+{
+    int price = getItemPrice(purchase, applePrice, orangePrice, pearPrice);
+    if (price > budget || price == -1)
+        return 0;
+    }
+  
+    
+
+// write the purchaseItem function. just gets the budget from the withinBudget function and prints the receit nothing else. goodnight.
